@@ -6,7 +6,7 @@ import { JwtAuthGuard } from './resources/auth/jwt-auth.guard';
 @Controller('')
 export class AppController {
   constructor(private authService: AuthService) {}
-  @Get()
+  @Get('/')
   async main() {
     return 'main';
   }
