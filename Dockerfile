@@ -1,19 +1,7 @@
 FROM node:14.17-alpine
-
-# Папка приложения
-ARG APP_DIR=/var/www/html
-RUN mkdir -p ${APP_DIR}
-WORKDIR ${APP_DIR}
-
-# Установка зависимостей
+WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm install --production
-
-# Копирование файлов проекта
+RUN npm install
 COPY . .
-
-# Уведомление о порте, который будет прослушивать работающее приложение
-EXPOSE 3000
-
-# Запуск проекта
-CMD ["npm", "start"]
+RUN npm run build
+CMD [ "node", "dist/main.js" ]
