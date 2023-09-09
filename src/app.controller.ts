@@ -8,7 +8,7 @@ export class AppController {
   constructor(private authService: AuthService) {}
   @Get('/')
   async main() {
-    return 'main page';
+    return 'main new page';
   }
 
   @UseGuards(JwtAuthGuard)
